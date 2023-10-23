@@ -5,9 +5,11 @@ package ie.atu;
 public class Main {
     public static void main(String[] args) {
 
+        Person user = new Person();
+
+        user.getUserInput();
 
 
-        Person student1 = new Person("Aidan", "Malone", 20);
-        student1.displayInfo();
+        user.displayInfo();
     }
 }

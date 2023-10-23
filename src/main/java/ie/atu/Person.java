@@ -29,7 +29,7 @@ public class Person {
         this.lastName = scanner.nextLine();
 
         System.out.println("Enter age: ");
-        this.age = scanner.nextint();
+        this.age = scanner.nextInt();
     }
 
     public void displayInfo(){
