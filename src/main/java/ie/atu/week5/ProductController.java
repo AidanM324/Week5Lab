@@ -19,40 +19,31 @@ public class ProductController {
         this.productService = productService;
     }
 
-    private List<Product> products = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
 
     @GetMapping("/getProducts")
     public List<Product> getProducts()
     {
-        return products;
+        return productService.getProducts();
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<List> addProduct(@Valid @RequestBody Product product)
+    public List<Product> addProduct(@Valid @RequestBody Product product)
     {
-        products.add(product);
-        return ResponseEntity.ok(products);
+       return productService.addProduct(product);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<List> editProduct(@Valid @PathVariable int id, @RequestBody Product product)
+    public List<Product> editProduct(@Valid @PathVariable int id, @RequestBody Product product)
     {
-        for(int i = 0; i< products.size(); i++){
-            if(products.get(i).getId() == id){
-                products.set(i, product);
-            }
-        }
-        return ResponseEntity.ok(products);
+
+        return productService.editProduct(product, id);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<List> deleteProduct(@Valid @PathVariable int id) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == id) {
-                products.remove(id);
-            }
-        }
-        return ResponseEntity.ok(products);
+    public List<Product> deleteProduct(@Valid @PathVariable int id) {
+
+        return productService.deleteProduct(id);
     }
 }
