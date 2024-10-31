@@ -11,11 +11,29 @@ import java.util.ArrayList;
 public class ProductService {
 
     private List<Product> productList = new ArrayList<>();
-    public List<Product> getAllProducts() {
+    public List<Product> getProducts() {
         return productList;
     }
-    public Product addProduct(Product product) {
+    public List<Product> addProduct(Product product) {
         productList.add(product);
-        return product;
+        return productList;
+    }
+
+    public List<Product> editProduct(Product product, int id) {
+        for(int i = 0; i< productList.size(); i++){
+            if(productList.get(i).getId() == id){
+                productList.set(i, product);
+            }
+        }
+        return productList;
+    }
+
+    public List<Product> deleteProduct(int id) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                productList.remove(i);
+            }
+        }
+        return productList;
     }
 }
