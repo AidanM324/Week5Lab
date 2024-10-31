@@ -1,6 +1,7 @@
 package ie.atu.week5;
 
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +29,14 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<List> addProduct(@RequestBody Product product)
+    public ResponseEntity<List> addProduct(@Valid @RequestBody Product product)
     {
         products.add(product);
         return ResponseEntity.ok(products);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<List> editProduct(@PathVariable int id, @RequestBody Product product)
+    public ResponseEntity<List> editProduct(@Valid @PathVariable int id, @RequestBody Product product)
     {
         for(int i = 0; i< products.size(); i++){
             if(products.get(i).getId() == id){
@@ -46,7 +47,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<List> deleteProduct(@PathVariable int id) {
+    public ResponseEntity<List> deleteProduct(@Valid @PathVariable int id) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 products.remove(id);
