@@ -17,10 +17,12 @@ public class ProductController {
     private final ProductService productService;
 
     @Autowired
-    public UserController(ProductService productService){
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     private List<Product> products = new ArrayList<>();
+
 
     @GetMapping("/getProducts")
     public List<Product> getProducts()
