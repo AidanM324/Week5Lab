@@ -15,12 +15,12 @@ public class UserController {
 
     @Autowired
     public UserController(AcknowledgeService acknowledgeService){
-        this.AcknowledgeService = acknowledgeService;
+        this.acknowledgeService = acknowledgeService;
     }
 
     @PostMapping("confirm-and-register")
     public String confirmAndRegister(@RequestBody UserDetails userDetails){
-        return acknowledgeService.askMessage(userDetails);
+        return acknowledgeService.ackMessage(userDetails);
     }
 
 }
