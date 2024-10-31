@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    private String name;
     private int id;
-    private int price;
+    private String name;
+    private float price;
 }
